@@ -1,5 +1,6 @@
 "use client"; // This line marks the file as a Client Component
 
+import { Cell, Column, Row, TableBody, TableHeader, TableView } from "@react-spectrum/s2";
 import { useState, useEffect } from "react";
 
 export default function PersonList() {
@@ -29,14 +30,27 @@ export default function PersonList() {
     
             <div>This page will show a list of people</div>
     
-            <div> 
-                <h1>Person List</h1>
-                <ul>
-                
-                    {items.map(item => (
-                    <li key={item.id}>{item.name} {item.phoneNumber}</li>
-                    ))}
-                </ul>
+            
+
+            <div>
+                <TableView>
+                    <TableHeader>
+                        <Column isRowHeader> Name </Column>
+                         <Column> Phone Number </Column>
+                         <Column> Likes Code </Column>
+                    </TableHeader>
+                    <TableBody items={items}>
+                        {item => (
+                            <Row id={item.id}>
+                                <Cell>{item.name}</Cell>
+                                <Cell>{item.phoneNumber}</Cell>
+                                <Cell>{item.likesCode ? "yes" : "no"  }</Cell>
+                            </Row>
+                        )}  
+                    </TableBody>
+                </TableView>
+
+
             </div>
             
     </div>   ;

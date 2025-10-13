@@ -1,3 +1,5 @@
+"use client"; // This line marks the file as a Client Component
+
 import Image from "next/image";
 
 export default function Home() {
